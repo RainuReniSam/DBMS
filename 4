@@ -1,7 +1,18 @@
 create table Publisher(
   Name varchar(30) primary key,
   Address varchar(30),
-  Phone_No integer);
+  Phone_No varchar(10));
+  
+  insert into Publisher
+values ('Mcgraw','Bangalore','9696500001');
+insert into Publisher
+values ('Person','Bangalore','9595950000');
+insert into Publisher
+values ('SAM Pub','Mangalore','9494940000');
+insert into Publisher
+values ('IOP','Mumbai','9797970000');
+insert into Publisher
+values ('IEEE','Delhi','9090900000');  
   
 create table Book(
   Book_id integer Primary key,
@@ -9,31 +20,7 @@ create table Book(
   Publisher_Name varchar(30) ,
   Pub_year integer,
   foreign key(Publisher_Name) references Publisher(Name));
-
- 
-create table Book_Author(
-  Book_id integer primary key,
-  Author_Name varchar(20),
-  Foreign key(Book_id) references Book(Book_id));
-
-create table Library_Branch(
-  Branch_id varchar(15) primary key,
-  Branch_Name varchar(30),
-  Address varchar(30));
-                    
-create table Book_Copies(
-  Book_id integer primary key,
-  Branch_id varchar(15) ,
-  No_of_copies integer,
-  Foreign key(Branch_id) references Library_Branch(Branch_id));              
-
-create table Book_Lending(
-  Book_id integer primary key,
-  Branch_id varchar(15),
-  Card_No varchar(30),
-  Date_Out integer,
-  Due_Date integer,
-  foreign key(Branch_id) references Library_Branch(Branch_id));
+                                                   
                                                    
 insert into Book
 values (10,'DBMS','Mcgraw',2010);
@@ -45,22 +32,15 @@ insert into Book
 values (40,'BDA','IOP',2018);
 insert into Book
 values (50,'MP','IEEE',2020);
-                                                   
-       
-                                                   
-                                                   
-insert into Publisher
-values ('Mcgraw','Bangalore',9696500001);
-insert into Publisher
-values ('Person','Bangalore',9595950000);
-insert into Publisher
-values ('SAM Pub','Mangalore',9494940000);
-insert into Publisher
-values ('IOP','Mumbai',9797970000);
-insert into Publisher
-values ('IEEE','Delhi',9090900000);     
-                                                   
-                                                   
+                                                                                    
+
+ 
+create table Book_Author(
+  Book_id integer primary key,
+  Author_Name varchar(20),
+  Foreign key(Book_id) references Book(Book_id));
+
+                                                
 insert into Book_Author
 values (10,'Andrew');                                                   
 insert into Book_Author
@@ -70,9 +50,14 @@ values (30,'Samual');
 insert into Book_Author
 values (40,'Padma');
 insert into Book_Author
-values (50,'Guru');
-                                                   
+values (50,'Guru');                                       
 
+create table Library_Branch(
+  Branch_id int primary key,
+  Branch_Name varchar(30),
+  Address varchar(30));
+                  
+                                
 insert into Library_Branch
 values (100,'Main Building','Mangalore');
 insert into Library_Branch
@@ -83,6 +68,15 @@ insert into Library_Branch
 values (400,'Research Building','Udupi');
 insert into Library_Branch
 values (500,'OPD Building','Manipal');        
+                                     
+                    
+create table Book_Copies(
+  Book_id integer,
+  Branch_id integer,
+  No_of_copies integer,
+  primary key (Book_id,Branch_id), foreign key(Branch_id) references Library_Branch(Branch_id));         
+                                                                                   
+   
                                                    
 insert into Book_Copies
 values (10,100,20);
@@ -93,11 +87,19 @@ values (10,200,5);
 insert into Book_Copies
 values (20,300,15);
 insert into Book_Copies
-values (40,500,7);
-                          
+values (40,500,7);                                                                                   
+
+create table Book_Lending(
+  Book_id integer,
+  Branch_id int,
+  Card_No varchar(30),
+  Date_Out date,
+  Due_Date date,
+  primary key (Book_id,Branch_id), Foreign key(Branch_id) references Library_Branch(Branch_id));
                                                    
+
 insert into Book_Lending
-values (10,100,201,'2020-06-15''2020-06-25');
+values (10,100,201,'2020-06-15','2020-06-25');
 insert into Book_Lending
 values (20,200,202,'2020-07-10','2020-07-20');
 insert into Book_Lending
@@ -105,6 +107,19 @@ values (30,300,203,'2020-07-25','2020-07-30');
 insert into Book_Lending
 values (40,400,204,'2020-08-14','2020-08-26');
 insert into Book_Lending
-values (50,500,205,'2020-09-1','2020-09-10');   
+values (50,500,205,'2020-09-1','2020-09-10');    
+                                                  
                                                    
-                                                                                              
+                                                   
+                  
+       
+                                                   
+                                                   
+    
+                                                   
+
+                          
+                                                   
+                                               
+                                                   
+                                                   

@@ -1,0 +1,32 @@
+create table Student(
+  SSN integer primary key,
+  Name varchar(20),
+  Major varchar(10)
+  Bdate date);
+  
+  insert into Student
+values (1,'Rahul','Botany','1997-06-15');
+insert into Student
+values (2,'Manoj','Geology','1997-07-19');
+insert into Student
+values (3,'James','English','1996-10-25');
+insert into Student
+values (7,'Roy','Botany','2000-01-04');
+insert into Student
+values (9,'Mona','Japanese','1999-05-28');
+
+
+create table Course(
+  Course integer Primary key,
+  Cname varchar(20),
+  Dept integer);
+                                                   
+                                                   
+insert into Course
+values (1,'Chemical Engineering',1);
+insert into Course
+values (2,'Civil Engineering',4);
+insert into Course
+values (3,'Philosophy',3);
+insert into Course
+values (4,'Art of liguistics',7);

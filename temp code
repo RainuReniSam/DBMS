@@ -1,32 +1,71 @@
 create table Student(
   SSN integer primary key,
   Name varchar(20),
-  Major varchar(10)
+  Major varchar(10),
   Bdate date);
   
-  insert into Student
-values (1,'Rahul','Botany','1997-06-15');
-insert into Student
-values (2,'Manoj','Geology','1997-07-19');
-insert into Student
-values (3,'James','English','1996-10-25');
-insert into Student
-values (7,'Roy','Botany','2000-01-04');
-insert into Student
-values (9,'Mona','Japanese','1999-05-28');
+insert into Student values (1,'Rahul','Botany','1997-06-15');
+insert into Student values (2,'Manoj','Geology','1997-07-19');
+insert into Student values (3,'James','English','1996-10-25');
+insert into Student values (7,'Roy','Botany','2000-01-04');
+insert into Student values (9,'Mona','Japanese','1999-05-28');
 
 
 create table Course(
-  Course integer Primary key,
+  CourseNo integer Primary key,
   Cname varchar(20),
   Dept integer);
                                                    
                                                    
-insert into Course
-values (1,'Chemical Engineering',1);
-insert into Course
-values (2,'Civil Engineering',4);
-insert into Course
-values (3,'Philosophy',3);
-insert into Course
-values (4,'Art of liguistics',7);
+insert into Course values (1,'Chemical Engineering',1);
+insert into Course values (2,'Civil Engineering',4);
+insert into Course values (3,'Philosophy',3);
+insert into Course values (4,'Art of liguistics',7);
+
+create table Book_Adoption(
+  CourseNo integer,
+  Quarter integer,
+  Book_ISBN varchar(10),
+  Foreign key(CourseNo) references Course(CourseNo));
+                                          
+                                         
+insert into Book_Adoption values (1,1,'JJKLL0');
+insert into Book_Adoption values (2,1,'FGT655');
+insert into Book_Adoption values (3,1,'GB0785');
+insert into Book_Adoption values (4,1,'S009GH');
+insert into Book_Adoption values (4,3,'GH67GH');
+                                          
+                                         
+
+ 
+create table Enroll(
+  SSN integer,
+  CourseNo integer,
+  Quarter integer,
+  Grade char,
+  Foreign key(SSN) references Student(SSN),Foreign key(CourseNo) references Course(CourseNo),Foreign key(Quarter) references Book_Adoption(Quarter));
+
+                                                
+insert into Enroll values (1,1,1,'A');       
+insert into Enroll values (2,2,1,'F'); 
+insert into Enroll values (3,3,1,'B'); 
+insert into Enroll values (7,1,1,'C'); 
+insert into Enroll values (9,4,3,'D');              
+
+       
+                                     
+                    
+create table Textbook(
+  Book_ISBN varchar(10) primary key,
+  Book_Title varchar(20),
+  Publisher varchar(10),
+  Author varchar(20));         
+                                                                                   
+   
+                                                   
+insert into Textbook values ('JJKLL0','XYZ','ABC','PQR');
+insert into Textbook values ('FGT655','ZAB','CBA','PQP');
+insert into Textbook values ('GB0785','BAC','BBC','PQQ');
+insert into Textbook values ('S009GH','CAD','CCB','PRP');
+insert into Textbook values ('GH67GH','DAB','CBQ','PRR');
+                 

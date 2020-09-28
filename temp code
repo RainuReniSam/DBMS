@@ -24,8 +24,9 @@ insert into Course values (4,'Art of liguistics',7);
 
 create table Book_Adoption(
   CourseNo integer,
-  Quarter integer,
+  Quarter integer ,
   Book_ISBN varchar(10),
+  primary key (CourseNo,Quarter),
   Foreign key(CourseNo) references Course(CourseNo));
                                           
                                          
@@ -42,8 +43,8 @@ create table Enroll(
   SSN integer,
   CourseNo integer,
   Quarter integer,
-  Grade char,
-  Foreign key(SSN) references Student(SSN),Foreign key(CourseNo) references Course(CourseNo),Foreign key(Quarter) references Book_Adoption(Quarter));
+  Grade varchar(2),
+  Foreign key(SSN) references Student(SSN),Foreign key(CourseNo,Quarter) references Book_Adoption(CourseNo,Quarter));
 
                                                 
 insert into Enroll values (1,1,1,'A');       
